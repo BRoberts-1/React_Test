@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-// import OutlinedCard from "./card";
+import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material/Send";
 
 const SponsorPage = () => {
   const [sponsors, setSponsors] = useState([]);
@@ -52,75 +53,76 @@ const SponsorPage = () => {
         return (
           <div key={sponsorCompany.id} className="box">
             <h3 key={sponsorCompany.display_name} className="partner">
-              {sponsorCompany.display_name} Partner
+              <span className="company-name">
+                {sponsorCompany.display_name}
+              </span>{" "}
+              Partner
             </h3>
-            <div className="company-info">
-              <div key={sponsorCompany.id} className="">
-                <div className="">
-                  <div className="">
-                    <img
-                      key={sponsorCompany.id}
-                      src={sponsorCompany.logo_url}
-                      className="logo"
-                      alt="sponsor logo"
-                    />
-                    <p className="text" key={sponsorCompany.id}>
-                      {sponsorCompany.description}
-                    </p>
-                    <a
-                      href={sponsorCompany.website}
-                      className="btn"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Learn More
-                    </a>
-                    {sponsorCompany.teamMembers.length > 0 && (
-                      <div className="team-members">
-                        {sponsorCompany.teamMembers.map((member) => {
-                          return (
-                            <div
-                              key={`${member.firstname}-${member.lastname}`}
-                              className=""
-                            >
-                              <div className="">
-                                <div className="">
-                                  {member.headshot_url && (
-                                    <img
-                                      src={member.headshot_url}
-                                      className="member-photo"
-                                      alt={`${member.firstname} ${member.lastname}`}
-                                      width="90"
-                                      height="90"
-                                    />
-                                  )}
-                                  <div className="member-info-container">
-                                    <p className="">
-                                      {`${member.firstname} ${member.lastname}`}
-                                    </p>
-                                    {member.jobtitle && (
-                                      <p className="">{member.jobtitle}</p>
-                                    )}
-                                  </div>
-                                </div>
-                                {member.linkedin && (
-                                  <a
-                                    href={member.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                  >
-                                    <LinkedInIcon />
-                                  </a>
-                                )}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                </div>
+            <div className="grid-container">
+              <div className="company-info">
+                <img
+                  key={sponsorCompany.id}
+                  src={sponsorCompany.logo_url}
+                  className="logo"
+                  alt="sponsor logo"
+                />
+                <p className="text" key={sponsorCompany.id}>
+                  {sponsorCompany.description}
+                </p>
+                <a
+                  href={sponsorCompany.website}
+                  className="btn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    className="company-button"
+                    variant="contained"
+                    endIcon={<SendIcon />}
+                    style={{ backgroundColor: "#da0782" }}
+                  >
+                    Learn More
+                  </Button>
+                </a>
               </div>
+              {sponsorCompany.teamMembers.length > 0 && (
+                <div className="team-members">
+                  {sponsorCompany.teamMembers.map((member) => {
+                    return (
+                      <div
+                        key={`${member.firstname}-${member.lastname}`}
+                        className="member"
+                      >
+                        <div className="member-info">
+                          {member.headshot_url && (
+                            <img
+                              src={member.headshot_url}
+                              className="member-photo"
+                              alt={`${member.firstname} ${member.lastname}`}
+                              width="90"
+                              height="90"
+                            />
+                          )}
+                          <p className="name">{`${member.firstname} ${member.lastname}`}</p>
+                          {member.jobtitle && (
+                            <p className="title">{member.jobtitle}</p>
+                          )}
+                        </div>
+                        {member.linkedin && (
+                          <a
+                            href={member.linkedin}
+                            className="linkedin-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <LinkedInIcon className="linkedin-icon" />
+                          </a>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         );

@@ -1,7 +1,3 @@
-import "./App.css";
-import IconLabelButtons from "./button";
-import OutlinedCard from "./card";
-// import CompanyPartner from "./CompanyPartner";
 import SponsorPage from "./sponsors";
 
 function App() {

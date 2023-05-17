@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 * {
   margin: 0;
   padding: 0;
@@ -131,4 +127,48 @@ html {
 
 .linkedin-icon {
   margin-left: auto;
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .company-info {
+    align-self: stretch;
+  }
+
+  .team-members {
+    align-self: stretch;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .member-info {
+    margin-top: 0.5rem;
+  }
+
+  .linkedin-link {
+    align-self: flex-end;
+  }
+
+  .linkedin-icon {
+    margin-left: 0.4rem;
+  }
 }
